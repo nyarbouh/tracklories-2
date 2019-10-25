@@ -1,137 +1,41 @@
-import React from "react";
-import { Tableuser } from "../component/tableuser.js";
-import "../../styles/demo.scss";
-import { Context } from "../store/appContext.js";
-import { Typeahead, Menu, menuItemContainer, MenuItem } from "react-bootstrap-typeahead";
-import ProgressBar from "react-bootstrap/ProgressBar";
-import Button from "react-bootstrap/Button";
-import Usernav from "../component/usernav.js";
-import Form from "react-bootstrap/Form";
-import FormControl from "react-bootstrap/FormControl";
-import { Select } from "../component/dropdown";
-import Alert from "react-bootstrap/Alert";
+import React, { useState, useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
 
-export class Demo extends React.Component {
-	constructor() {
-		super();
-		this.state = {
-			showModal: false,
-			select: "",
-			showAlert: false
-		};
-	}
+import { Context } from "../store/appContext";
 
-	render() {
-		return (
-			<div>
-				<Context.Consumer>
-					{({ store, actions }) => {
-						return (
-							<div className="container">
-								<Usernav onDelete={() => this.setState({ showModal: true })} />
-								<br />
-								<br />
-								<br />
-								<br />
-								<h1 className="text-center">
-									<strong>Time to Burn Some Calories!</strong>
-								</h1>
-								<div />
-								<div className="text-center">
-									<span className="text-capitalize font-weight-bold h2 " id="username">
-										Welcome, {store.tempLoggedUser.name}
-									</span>{" "}
-									<br />
-									<i className="fas fa-caret-square-left arrow"> </i>{" "}
-									<span className="font-weight-bold">
-										{" "}
-										{store.months[store.day.getMonth()]} {store.day.getDate()},{" "}
-										{store.day.getFullYear()}{" "}
-									</span>
-									<i className="fas fa-caret-square-right arrow " />
-								</div>
-								<br />
-								<Select />
-								<div className="container d-flex flex-row justify-content-center">
-									<Typeahead
-										ref={typeahead => (this.typeahead = typeahead)}
-										className="w-25 d-inline-block search"
-										labelKey="food"
-										align="justify"
-										placeholder="Choose your Meal"
-										options={store.common.concat(store.branded)}
-										renderMenu={(results, menuProps) => (
-											<Menu {...menuProps}>
-												{results.map((result, index) => (
-													<MenuItem
-														option={result}
-														position={index}
-														key={index}
-														className="text-capitalize">
-														{<img src={result.pic} />} {result.food}
-													</MenuItem>
-												))}
-											</Menu>
-										)}
-										id="food"
-										onChange={selected => {
-											this.setState({ select: selected });
-										}}
-									/>
-									<Button
-										type="submit"
-										className="d-inline-block"
-										onClick={() => {
-											actions.addFood(
-												this.state.select,
-												this.typeahead.getInstance().clear(),
-												this.typeahead.getInstance().getInput().value
-											);
-										}}>
-										Add Food Item
-									</Button>
-								</div>
-								<div id="ove">
-									<Tableuser onDelete={() => this.setState({ showModal: true })} />
-								</div>
-								<br />
-								<br />
-								<br />
-								<br />
-								{store.totalCal > 0 ? (
-									<Alert variant="danger" className="w-50 mx-auto text-center" show={true}>
-										GET MOVING AND BURN SOME CALORIES!
-									</Alert>
-								) : (
-									<Alert variant="danger" className="w-50 mx-auto text-center" show={false}>
-										GET MOVING AND BURN SOME CALORIES!
-									</Alert>
-								)}
-								<ProgressBar id="bar">
-									<ProgressBar
-										className="mw-100"
-										variant="danger"
-										animated={true}
-										now={store.totalCal}
-										key={1}
-										label={store.totalCal < 1 ? "" : "Total Cal: " + Math.round(store.totalCal)}
-									/>
+export const Demo = () => {
+	const { store, actions } = useContext(Context);
 
-									<ProgressBar
-										className="mw-100"
-										variant="success"
-										animated={true}
-										now={store.totalCalBurned}
-										key={3}
-										label={store.totalCalBurned ? "Total Cal Burned: " + store.totalCalBurned : ""}
-									/>
-								</ProgressBar>
-								;
-							</div>
-						);
-					}}
-				</Context.Consumer>
-			</div>
-		);
-	}
-}
+	return (
+		<div className="container">
+			<ul className="list-group">
+				{store.demo.map((item, index) => {
+					return (
+						<li
+							key={index}
+							className="list-group-item d-flex justify-content-between"
+							style={{ background: item.background }}>
+							<Link to={"/single/" + index}>
+								<span>Link to: {item.title}</span>
+							</Link>
+							{// Conditional render example
+							// Check to see if the background is orange, if so, display the message
+							item.background === "orange" ? (
+								<p style={{ color: item.initial }}>
+									Check store/flux.js scroll to the actions to see the code
+								</p>
+							) : null}
+							<button className="btn btn-success" onClick={() => actions.changeColor(index, "orange")}>
+								Change Color
+							</button>
+						</li>
+					);
+				})}
+			</ul>
+			<br />
+			<Link to="/">
+				<button className="btn btn-primary">Back home</button>
+			</Link>
+		</div>
+	);
+};
