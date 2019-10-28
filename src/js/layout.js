@@ -1,10 +1,13 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./views/home";
-import { Demo } from "./views/demo";
-import { Single } from "./views/single";
+import { Informative } from "./views/informative";
+import { Contact } from "./views/contact";
+import { Login } from "./views/log-in";
+import { Edit } from "./views/edit-info";
+import { Create } from "./views/create-user";
+import { Tracker } from "./views/food-tracker";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
@@ -19,14 +22,15 @@ export const Layout = () => {
 	return (
 		<div className="d-flex flex-column h-100">
 			<BrowserRouter>
-				<ScrollToTop>
-					<Navbar />
-					<Route exact path="/" component={Home} />
-					<Route path="/demo" component={Demo} />
-					<Route path="/single/:theid" component={Single} />
-					<Route render={() => <h1>Not found!</h1>} />
-					<Footer />
-				</ScrollToTop>
+				<Navbar /> {/** Jose */}
+				<Route exact path="/home" component={Home} /> {/** Jose */}
+				<Route path="/informative" component={Informative} /> {/** Nizar */}
+				<Route path="/contact" component={Contact} /> {/** Nizar */}
+				<Route path="/log-in" component={Login} /> {/** Marcel */}
+				<Route path="/edit-info" component={Edit} /> {/** Marcel */}
+				<Route path="/create-user" component={Create} /> {/** Nizar */}
+				<Route path="/food-tracker" component={Tracker} /> {/** Jose */}
+				<Footer /> {/** Marcel */}
 			</BrowserRouter>
 		</div>
 	);
