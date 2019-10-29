@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./views/home";
 import { Informative } from "./views/informative";
@@ -22,15 +23,19 @@ export const Layout = () => {
 	return (
 		<div className="d-flex flex-column h-100">
 			<BrowserRouter>
-				<Navbar /> {/** Jose */}
-				<Route exact path="/home" component={Home} /> {/** Jose */}
-				<Route path="/informative" component={Informative} /> {/** Nizar */}
-				<Route path="/contact" component={Contact} /> {/** Nizar */}
-				<Route path="/log-in" component={Login} /> {/** Marcel */}
-				<Route path="/edit-info" component={Edit} /> {/** Marcel */}
-				<Route path="/create-user" component={Create} /> {/** Nizar */}
-				<Route path="/food-tracker" component={Tracker} /> {/** Jose */}
-				<Footer /> {/** Marcel */}
+				<ScrollToTop>
+					<Navbar /> {/** Jose */}
+					<Switch>
+						<Route exact path="/" component={Home} /> {/** Jose */}
+						<Route path="/informative" component={Informative} /> {/** Nizar */}
+						<Route path="/contact" component={Contact} /> {/** Nizar */}
+						<Route path="/log-in" component={Login} /> {/** Marcel */}
+						<Route path="/edit-info" component={Edit} /> {/** Marcel */}
+						<Route path="/create-user" component={Create} /> {/** Nizar */}
+						<Route path="/food-tracker" component={Tracker} /> {/** Jose */}
+					</Switch>
+					<Footer /> {/** Marcel */}
+				</ScrollToTop>
 			</BrowserRouter>
 		</div>
 	);
