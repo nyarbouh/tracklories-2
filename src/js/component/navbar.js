@@ -15,7 +15,7 @@ export class Navbar extends React.Component {
 
 	render() {
 		return (
-			<nav className="navbar navbar-expand-lg navbar-light bg-light">
+			<nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
 				<div className="container w-80%">
 					<div className="mx-auto">
 						<div className="text-center">
