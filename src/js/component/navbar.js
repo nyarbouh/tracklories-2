@@ -82,7 +82,7 @@ export class Navbar extends React.Component {
 										</Link>
 										<Link to="/create-user">
 											<a className="dropdown-item" href="#">
-												Sign In
+												Sign Up
 											</a>
 										</Link>
 										<Link to="/edit-info">
