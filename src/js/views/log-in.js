@@ -4,7 +4,7 @@ export class Login extends Component {
 	state = {};
 	render() {
 		return (
-			<div className="contanier-fluid">
+			<div className="contanier-fluid containerlogin">
 				<div className="row">
 					<div className="offset-md-4 col-md-4">
 						<h2>LOGIN</h2>

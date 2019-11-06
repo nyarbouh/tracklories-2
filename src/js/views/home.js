@@ -13,7 +13,7 @@ export class Home extends React.Component {
 					<hr className="my-4" />
 					<p>Sign in to start a new healthy life</p>
 					<p className="lead">
-						<a className="btn btn-primary btn-lg" href="#" role="button">
+						<a className="btn btn-primary btn-lg" role="button">
 							Join in
 						</a>
 					</p>
@@ -95,14 +95,13 @@ export class Home extends React.Component {
 					<p className="mb-0">
 						Join now to save your meal in your tracker profile up 5 days,
 						<br />
-						<a href="#" className="alert-link">
+						<a className="alert-link">
 							Sign In <br />
 						</a>
 						Or if you are already member <br />
 					</p>
-					<a href="#" className="alert-link">
-						Log In
-					</a>
+
+					<a className="alert-link">Log In</a>
 				</div>
 				{/*Warning advice text*/}
 			</div>

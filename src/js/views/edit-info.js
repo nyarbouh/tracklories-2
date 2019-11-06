@@ -4,7 +4,7 @@ export class Edit extends Component {
 	state = {};
 	render() {
 		return (
-			<div className="container">
+			<div className="container containereditinfo">
 				<div className="row my-2">
 					<div className="col-lg-8 order-lg-2">
 						<ul className="nav nav-tabs">

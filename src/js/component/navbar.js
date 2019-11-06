@@ -36,25 +36,33 @@ export class Navbar extends React.Component {
 						<div className="collapse navbar-collapse" id="navbarResponsive">
 							<ul className="navbar-nav ml-auto">
 								<li className="nav-item active">
-									<a className="nav-link" href="#">
-										Home
-										<span className="sr-only">(current)</span>
-									</a>
+									<Link to="/">
+										<a className="nav-link" href="#">
+											Home
+											<span className="sr-only">(current)</span>
+										</a>
+									</Link>
 								</li>
 								<li className="nav-item">
-									<a className="nav-link" href="#">
-										Informative
-									</a>
+									<Link to="/informative">
+										<a className="nav-link" href="#">
+											Informative
+										</a>
+									</Link>
 								</li>
 								<li className="nav-item">
-									<a className="nav-link" href="#">
-										Food Tracker
-									</a>
+									<Link to="/food-tracker">
+										<a className="nav-link" href="#">
+											Food Tracker
+										</a>
+									</Link>
 								</li>
 								<li className="nav-item">
-									<a className="nav-link" href="#">
-										Contact
-									</a>
+									<Link to="/contact">
+										<a className="nav-link" href="#">
+											Contact
+										</a>
+									</Link>
 								</li>
 								<li className={" btn-group " + (this.state.clicked && "show")}>
 									<button
@@ -67,19 +75,27 @@ export class Navbar extends React.Component {
 										Log in
 									</button>
 									<div className={"dropdown-menu dropdown-menu " + (this.state.clicked && "show")}>
-										<a className="dropdown-item" href="#">
-											Log In
-										</a>
-										<a className="dropdown-item" href="#">
-											Sign In
-										</a>
-										<a className="dropdown-item" href="#">
-											Edit Info
-										</a>
+										<Link to="/log-in">
+											<a className="dropdown-item" href="#">
+												Log In
+											</a>
+										</Link>
+										<Link to="/create-user">
+											<a className="dropdown-item" href="#">
+												Sign In
+											</a>
+										</Link>
+										<Link to="/edit-info">
+											<a className="dropdown-item" href="#">
+												Edit Info
+											</a>
+										</Link>
 										<div className="dropdown-divider" />
-										<a className="dropdown-item" href="#">
-											Log Out
-										</a>
+										<Link to="/">
+											<a className="dropdown-item" href="#">
+												Log Out
+											</a>
+										</Link>
 									</div>
 								</li>
 							</ul>
